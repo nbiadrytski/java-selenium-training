@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Data Driven Basics" >
+    <test name="Regression">
+        <classes>
+            <class name="com.seleniumjava.testcases.LoginTest"/>
+        </classes>
+    </test>
+</suite>
