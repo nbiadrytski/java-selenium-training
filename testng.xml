@@ -1,9 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Data Driven Basics" >
-    <test name="Regression">
+    <test name="Bank Manager Login">
         <classes>
-            <class name="com.seleniumjava.testcases.LoginTest"/>
+            <class name="com.seleniumjava.testcases.BankManagerLoginTest"/>
+        </classes>
+    </test>
+    <test name="Add Customer Test">
+        <classes>
+            <class name="com.seleniumjava.testcases.AddCustomerTest"/>
         </classes>
     </test>
 </suite>

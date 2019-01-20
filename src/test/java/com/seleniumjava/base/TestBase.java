@@ -1,9 +1,13 @@
 package com.seleniumjava.base;
 
+import com.seleniumjava.utilities.ExcelReader;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -20,12 +24,16 @@ public class TestBase {
     protected static Properties OR = new Properties();
     private static FileInputStream fileStream;
     protected static Logger log = Logger.getLogger("rootLogger");
+    public static ExcelReader excel = new ExcelReader(
+            System.getProperty("user.dir") + "\\src\\test\\resources\\excel\\testdata.xlsx");
+    public static WebDriverWait wait;
 
     @BeforeSuite
     public void setUp() {
         if (driver == null) {
             try {
-                fileStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
+                fileStream = new FileInputStream(
+                        System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -36,7 +44,8 @@ public class TestBase {
                 e.printStackTrace();
             }
             try {
-                fileStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
+                fileStream = new FileInputStream(
+                        System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -59,7 +68,20 @@ public class TestBase {
             driver.get(config.getProperty("testsiteurl"));
             log.debug("Navigated to: " + config.getProperty("testsiteurl"));
             driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
+            wait = new WebDriverWait(driver, 5);
         }
+    }
+
+    public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+
+        }catch (NoSuchElementException e) {
+            return false;
+
+        }
+
     }
 
     @AfterSuite
