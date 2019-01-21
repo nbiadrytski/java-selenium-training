@@ -102,6 +102,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <plugins>
@@ -111,6 +119,9 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

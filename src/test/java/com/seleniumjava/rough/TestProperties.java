@@ -10,8 +10,7 @@ public class TestProperties {
 
         Properties config = new Properties();
 
-        FileInputStream fis = new FileInputStream(
-                System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
         config.load(fis);
 
         System.out.println(config.getProperty("browser"));

@@ -10,7 +10,7 @@ public class BankManagerLoginTest extends TestBase {
     @Test
     public void loginAsBankManager() {
 
-        log.debug("Inside Login Test");
+        log.info("Inside Login Test");
         Reporter.log("Inside Login Test");  // will be added to testng report
 
         driver.findElement(By.xpath(OR.getProperty("bmlBtn"))).click();
