@@ -16,4 +16,9 @@
             <class name="com.seleniumjava.testcases.AddCustomerTest"/>
         </classes>
     </test>
+    <test name="Open Account Test">
+        <classes>
+            <class name="com.seleniumjava.testcases.OpenAccountTest"/>
+        </classes>
+    </test>
 </suite>

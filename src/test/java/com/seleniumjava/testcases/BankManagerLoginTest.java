@@ -6,18 +6,23 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class BankManagerLoginTest extends TestBase {
-    @Test
-    public void loginAsBankManager() {
+import java.io.IOException;
 
+public class BankManagerLoginTest extends TestBase {
+    
+    @Test
+    public void bankManagerLoginTest() throws IOException, InterruptedException {
+
+        //verifyEquals("abc", "xyz");  // soft assert
+        Thread.sleep(3000);
+        
         log.info("Inside Login Test");
         Reporter.log("Inside Login Test");  // will be added to testng report
 
-        driver.findElement(By.xpath(OR.getProperty("bmlBtn"))).click();
+        click("bmlBtn_CSS");
 
-        // Javadoc CTRL + Q (Windows), CTRL + J (Mac)
-        Assert.assertTrue(isElementPresent(By.cssSelector(OR.getProperty("addCustomerBtn"))), "Login not successful");
+        Assert.assertTrue(isElementPresent(By.cssSelector(OR.getProperty("addCustomerBtn_CSS"))), "Login not successful");
 
-        Reporter.log("Login successfully executed");  // will be added to testng report
+        Reporter.log("Login successfully executed");
     }
 }
